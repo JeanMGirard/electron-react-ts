@@ -1,0 +1,71 @@
+{
+  "name": "my-app",
+  "version": "0.2.0",
+  "author": "Your Name",
+  "description": "React-TypeScript-Electron sample with Create React App and Electron Builder",
+  "homepage": ".",
+  "main": "build/electron/main.js",
+  "private": true,
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "postinstall": "electron-builder install-app-deps",
+    "electron:dev": "concurrently \"cross-env BROWSER=none yarn start\" \"wait-on http://127.0.0.1:3000 && tsc -p electron -w\" \"wait-on http://127.0.0.1:3000 && tsc -p electron && electron .\"",
+    "electron:build": "yarn build && tsc -p electron && electron-builder",
+    "eject": "react-scripts eject"
+  },
+  "build": {
+    "extends": null,
+    "files": [
+      "build/**/*"
+    ],
+    "directories": {
+      "buildResources": "assets"
+    }
+  },
+  "eslintConfig": {
+    "extends": [
+      "react-app",
+      "react-app/jest"
+    ]
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  },
+
+  "dependencies": {
+    "electron-devtools-installer": "^3.2.0",
+    "electron-reload": "^1.5.0",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-scripts": "5.0.1",
+    "web-vitals": "^3.4.0"
+  },
+  "devDependencies": {
+    "@testing-library/jest-dom": "^5.17.0",
+    "@testing-library/react": "^14.0.0",
+    "@testing-library/user-event": "^14.4.3",
+    "@types/electron-devtools-installer": "^2.2.2",
+    "@types/jest": "^29.5.3",
+    "@types/node": "^20.4.4",
+    "@types/react": "^18.2.15",
+    "@types/react-dom": "^18.2.7",
+    "@types/mocha": "^10.0.1",
+    "concurrently": "^8.2.0",
+    "cross-env": "^7.0.3",
+    "electron": "^25.3.1",
+    "electron-builder": "^24.4.0",
+    "typescript": "^5.1.6",
+    "wait-on": "^7.0.1"
+  }
+}
